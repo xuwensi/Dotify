@@ -1,11 +1,62 @@
 package edu.uw.wensix.dotify
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.INVISIBLE
+import android.widget.*
+import edu.uw.wensix.dotify.databinding.ActivityMainBinding
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+
+    private var randomNum = Random.nextInt(0, 10000)
+    private lateinit var numPlayed: TextView
+    private lateinit var binding: ActivityMainBinding
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+//        setContentView(R.layout.activity_main)
+        binding.numPlayed.text = "$randomNum plays"
+
+        binding.playIcon.setOnClickListener {
+            playClicked()
+        }
+
+        binding.previousIcon.setOnClickListener {
+            previousClicked()
+        }
+
+        binding.nextIcon.setOnClickListener {
+            nextClicked()
+        }
+
+        binding.changeUser.setOnClickListener {
+            changeUserClicked()
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun playClicked() {
+        randomNum += 1
+        numPlayed.text = "$randomNum plays"
+    }
+
+    private fun previousClicked() {
+        Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun nextClicked() {
+        Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun changeUserClicked() {
+        binding.username.visibility = INVISIBLE
+
     }
 }

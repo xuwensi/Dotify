@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Dotify</string>
+    <string name="wensi_xu">Wensi Xu</string>
+    <string name="this_is_the_album_cover">This is the album cover</string>
+    <string name="change_user">CHANGE USER</string>
+    <string name="run_away">Run away</string>
+    <string name="mino">Mino</string>
+    <string name="apply">APPLY</string>
 </resources>
