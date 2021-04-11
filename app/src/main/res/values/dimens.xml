@@ -3,5 +3,6 @@
     <dimen name="largeFont">35sp</dimen>
     <dimen name="mediumFont">20sp</dimen>
     <dimen name="smallFont">10sp</dimen>
-    <dimen name="mediumImageSize">60dp</dimen>
+    <dimen name="mediumIconSize">50dp</dimen>
+    <dimen name="largeIconSize">80dp</dimen>
 </resources>

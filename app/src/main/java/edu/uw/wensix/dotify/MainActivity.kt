@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.*
 import edu.uw.wensix.dotify.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -24,27 +25,21 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         binding.numPlayed.text = "$randomNum plays"
 
-        binding.playIcon.setOnClickListener {
-            playClicked()
-        }
+        binding.playIcon.setOnClickListener { playClicked() }
 
-        binding.previousIcon.setOnClickListener {
-            previousClicked()
-        }
+        binding.previousIcon.setOnClickListener { previousClicked() }
 
-        binding.nextIcon.setOnClickListener {
-            nextClicked()
-        }
+        binding.nextIcon.setOnClickListener { nextClicked() }
 
-        binding.changeUser.setOnClickListener {
-            changeUserClicked()
-        }
+        binding.changeUser.setOnClickListener { changeUserClicked() }
+
+        binding.applyBtn.setOnClickListener { applyBtnClicked() }
     }
 
     @SuppressLint("SetTextI18n")
     fun playClicked() {
         randomNum += 1
-        numPlayed.text = "$randomNum plays"
+        binding.numPlayed.text = "$randomNum plays"
     }
 
     private fun previousClicked() {
@@ -57,6 +52,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun changeUserClicked() {
         binding.username.visibility = INVISIBLE
+        binding.changeUser.visibility = INVISIBLE
+        binding.editUsername.visibility = VISIBLE
+        binding.applyBtn.visibility = VISIBLE
 
+    }
+
+    private fun applyBtnClicked() {
+        binding.username.visibility = VISIBLE
+        binding.changeUser.visibility = VISIBLE
+        binding.editUsername.visibility = INVISIBLE
+        binding.applyBtn.visibility = INVISIBLE
+        val changedName = binding.editUsername.text.toString()
+        binding.username.text = changedName
     }
 }

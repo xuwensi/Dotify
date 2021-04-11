@@ -11,18 +11,17 @@
         android:padding="16dp"
         tools:context=".MainActivity">
 
-
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|start"
             android:text="@string/wensi_xu"
-            android:textColor="#333232"
+            android:textColor="#888080"
             android:textSize="@dimen/mediumFont"
+            app:layout_constraintBottom_toBottomOf="@id/changeUser"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/changeUser"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editUsername"
@@ -30,16 +29,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|start"
             android:textColor="@color/black"
+            android:textSize="@dimen/mediumFont"
             android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/applyBtn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/applyBtn"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/changeUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
+            android:backgroundTint="#2B81C5"
             android:text="@string/change_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,11 +50,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
+            android:backgroundTint="#2B81C5"
             android:text="@string/apply"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:visibility="invisible"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"
@@ -63,7 +64,7 @@
             app:constraint_referenced_ids="username, changeUser, editUsername, applyBtn"
             app:layout_constraintBottom_toTopOf="@id/albumCover"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/albumCover"
