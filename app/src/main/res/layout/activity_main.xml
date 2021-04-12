@@ -8,7 +8,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/containerPadding"
         tools:context=".MainActivity">
 
         <TextView
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|start"
             android:text="@string/wensi_xu"
-            android:textColor="#888080"
+            android:textColor="@color/gray"
             android:textSize="@dimen/mediumFont"
             app:layout_constraintBottom_toBottomOf="@id/changeUser"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:backgroundTint="#2B81C5"
+            android:backgroundTint="@color/cyan"
             android:text="@string/change_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:backgroundTint="#2B81C5"
+            android:backgroundTint="@color/cyan"
             android:text="@string/apply"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#00000000"
+                android:background="@color/transparent"
                 android:scaleType="fitEnd"
                 android:src="@drawable/ic_baseline_skip_previous_24" />
 
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#00000000"
+                android:background="@color/transparent"
                 android:src="@drawable/ic_play_button"
                 app:layout_constraintTop_toBottomOf="@+id/numPlayed" />
 
@@ -146,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#00000000"
+                android:background="@color/transparent"
                 android:scaleType="fitStart"
                 android:src="@drawable/ic_baseline_skip_next_24" />
 

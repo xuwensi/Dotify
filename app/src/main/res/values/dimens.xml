@@ -5,4 +5,5 @@
     <dimen name="smallFont">10sp</dimen>
     <dimen name="mediumIconSize">50dp</dimen>
     <dimen name="largeIconSize">80dp</dimen>
+    <dimen name="containerPadding">16dp</dimen>
 </resources>

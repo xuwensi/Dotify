@@ -22,17 +22,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-//        setContentView(R.layout.activity_main)
+
         binding.numPlayed.text = "$randomNum plays"
-
         binding.playIcon.setOnClickListener { playClicked() }
-
         binding.previousIcon.setOnClickListener { previousClicked() }
-
         binding.nextIcon.setOnClickListener { nextClicked() }
-
         binding.changeUser.setOnClickListener { changeUserClicked() }
-
         binding.applyBtn.setOnClickListener { applyBtnClicked() }
     }
 
