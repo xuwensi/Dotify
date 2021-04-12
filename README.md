@@ -17,4 +17,4 @@ Extra credit attempted:
 
   
 
-![runningApp](\screenshots\runningApp.png)
+![runningApp](screenshots/runningApp.png)
