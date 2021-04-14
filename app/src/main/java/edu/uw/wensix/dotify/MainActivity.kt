@@ -1,6 +1,5 @@
 package edu.uw.wensix.dotify
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.INVISIBLE
@@ -12,10 +11,9 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     private var randomNum = Random.nextInt(0, 10000)
-    private lateinit var numPlayed: TextView
     private lateinit var binding: ActivityMainBinding
 
-    @SuppressLint("SetTextI18n")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,26 +21,21 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.numPlayed.text = "$randomNum plays"
+        binding.numPlayed.text = binding.root.context.getString(R.string.play_format, randomNum)
         binding.playIcon.setOnClickListener { playClicked() }
-        binding.previousIcon.setOnClickListener { previousClicked() }
-        binding.nextIcon.setOnClickListener { nextClicked() }
+        binding.previousIcon.setOnClickListener {
+            Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
+        }
+        binding.nextIcon.setOnClickListener {
+            Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
+        }
         binding.changeUser.setOnClickListener { changeUserClicked() }
         binding.applyBtn.setOnClickListener { applyBtnClicked() }
     }
 
-    @SuppressLint("SetTextI18n")
-    fun playClicked() {
+    private fun playClicked() {
         randomNum += 1
-        binding.numPlayed.text = "$randomNum plays"
-    }
-
-    private fun previousClicked() {
-        Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun nextClicked() {
-        Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
+        binding.numPlayed.text = binding.root.context.getString(R.string.play_format, randomNum)
     }
 
     private fun changeUserClicked() {

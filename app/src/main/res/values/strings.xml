@@ -6,4 +6,5 @@
     <string name="run_away">Run away</string>
     <string name="mino">Mino</string>
     <string name="apply">APPLY</string>
+    <string name="play_format">%d plays</string>
 </resources>
