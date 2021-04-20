@@ -10,4 +10,5 @@
     <color name="gray">#888080</color>
     <color name="cyan">#2B81C5</color>
     <color name="transparent">#00000000</color>
+    <color name="mini_player_background">#31888080</color>
 </resources>

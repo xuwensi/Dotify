@@ -7,4 +7,7 @@
     <string name="mino">Mino</string>
     <string name="apply">APPLY</string>
     <string name="play_format">%d plays</string>
+    <string name="mini_player_format">%s - %s</string>
+    <string name="shuffle">SHUFFLE</string>
+    <string name="welcome_back">Welcome Back</string>
 </resources>

@@ -11,61 +11,6 @@
         android:padding="@dimen/containerPadding"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:text="@string/wensi_xu"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/mediumFont"
-            app:layout_constraintBottom_toBottomOf="@id/changeUser"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:textColor="@color/black"
-            android:textSize="@dimen/mediumFont"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@id/applyBtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/changeUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|end"
-            android:backgroundTint="@color/cyan"
-            android:text="@string/change_user"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/applyBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|end"
-            android:backgroundTint="@color/cyan"
-            android:text="@string/apply"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="username, changeUser, editUsername, applyBtn"
-            app:layout_constraintBottom_toTopOf="@id/albumCover"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <ImageView
             android:id="@+id/albumCover"
             android:layout_width="0dp"
@@ -76,7 +21,7 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barrier" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/soundTitle"
@@ -96,7 +41,9 @@
             android:id="@+id/artistName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:gravity="center_horizontal"
+            android:maxLines="1"
             android:text="@string/mino"
             android:textColor="@color/black"
             android:textSize="@dimen/mediumFont"
