@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.ericchee.songdataprovider.Song
+import android.view.Menu
+import android.view.MenuItem
 import edu.uw.wensix.dotify.databinding.ActivityPlayerBinding
 import kotlin.random.Random
 
-private const val SONG_KEY = "song"
+private const val SONG_KEY = "SONG_KEY"
+private const val COUNT_VALUE_KEY = "COUNT_VAL_KEY"
 
 fun navigateToSongDetail(context: Context, song: Song) = with(context) {
 
@@ -26,11 +29,18 @@ fun navigateToSongDetail(context: Context, song: Song) = with(context) {
 class PlayerActivity : AppCompatActivity() {
 
     private var randomNum = Random.nextInt(0, 10000)
-    private lateinit var binding: ActivityPlayerBinding
 
+    private var songTitle: String = ""
+    private var imgId: Int = 0
+
+    private lateinit var binding: ActivityPlayerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            randomNum = savedInstanceState.getInt(COUNT_VALUE_KEY, 0)
+        }
 
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         val view = binding.root
@@ -39,10 +49,14 @@ class PlayerActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         with(binding) {
-            val song: Song? = intent.getParcelableExtra<Song>(SONG_KEY)
-            if (song?.largeImageID != null) {
-                albumCover.setImageResource(song.largeImageID)
+            val song: Song? = intent.getParcelableExtra(SONG_KEY)
+
+            if (song != null) {
+                songTitle = song.title
+                imgId = song.largeImageID
             }
+
+            albumCover.setImageResource(song?.largeImageID ?: return)
             soundTitle.text = song?.title.toString()
             artistName.text = song?.artist.toString()
 
@@ -59,6 +73,29 @@ class PlayerActivity : AppCompatActivity() {
                 Toast.makeText(this@PlayerActivity, "Skipping to next track", Toast.LENGTH_SHORT)
                     .show()
             }
+            btnSetting.setOnClickListener {
+                navigateToSetting(this@PlayerActivity, song.title, song.largeImageID, randomNum.toString())
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.setting_menu_item, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_setting -> {
+                navigateToSetting(
+                    this@PlayerActivity,
+                    songTitle,
+                    imgId,
+                    randomNum.toString()
+                )
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
         }
     }
 
@@ -70,5 +107,10 @@ class PlayerActivity : AppCompatActivity() {
     private fun playClicked() {
         randomNum += 1
         binding.numPlayed.text = binding.root.context.getString(R.string.play_format, randomNum)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(COUNT_VALUE_KEY, randomNum)
+        super.onSaveInstanceState(outState)
     }
 }

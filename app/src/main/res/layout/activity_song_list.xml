@@ -37,7 +37,6 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/welcome_back"
             android:textSize="@dimen/mediumSmallFont" />
 
         <Button

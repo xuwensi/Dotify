@@ -1,13 +1,27 @@
 <resources>
     <string name="app_name">Dotify</string>
-    <string name="wensi_xu">Wensi Xu</string>
     <string name="this_is_the_album_cover">This is the album cover</string>
-    <string name="change_user">CHANGE USER</string>
     <string name="run_away">Run away</string>
     <string name="mino">Mino</string>
-    <string name="apply">APPLY</string>
     <string name="play_format">%d plays</string>
     <string name="mini_player_format">%s - %s</string>
     <string name="shuffle">SHUFFLE</string>
     <string name="welcome_back">Welcome Back</string>
+    <string name="settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="statistics">Statistics</string>
+    <string name="about">About</string>
+    <string name="ultraman_tiga">Ultraman Tiga</string>
+    <string name="age_30000000">Age: 30000000+</string>
+    <string name="email_tiga_ultraman_com">Email: tiga@ultraman.com</string>
+    <string name="height_53m">Height: 53 meters</string>
+    <string name="weight_44000_tons">Weight: 44000 tons</string>
+    <string name="human_form_daigo_madoka">Human Form: Daigo Madoka</string>
+    <string name="about_creator_wensi_xu">Creator: Wensi Xu</string>
+    <string name="about_version_number">Version: %s</string>
+    <string name="about_university_of_washington">Education: University of Washington</string>
+    <string name="about_major">Major: Informatics</string>
+    <string name="stat_song_played">%s has been played %s times</string>
+    <string name="setting">Setting</string>
 </resources>

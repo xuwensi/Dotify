@@ -6,30 +6,49 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.VISIBLE
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.wensix.dotify.databinding.ActivitySongListBinding
 
-fun navigateToSongList(context: Context) = with(context) {
-    val intent = Intent(context, SongListActivity::class.java)
-    startActivity(intent)
-}
+private const val SONG_KEY = "SONG_KEY"
 
 class SongListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySongListBinding
 
+    private var selectedSong: Song? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
-
         title = "All Songs"
+
+        if (savedInstanceState != null) {
+            selectedSong = savedInstanceState.getParcelable(SONG_KEY)
+            with(binding) {
+                miniPlayer.visibility = VISIBLE
+                val params = allSongList.layoutParams as ConstraintLayout.LayoutParams
+                params.bottomToTop = miniPlayer.id
+                allSongList.requestLayout()
+                miniPlayerText.text =
+                    root.context.getString(
+                        R.string.mini_player_format,
+                        selectedSong?.title,
+                        selectedSong?.artist
+                    )
+                miniPlayer.setOnClickListener {
+                    selectedSong?.let { it1 -> navigateToSongDetail(this@SongListActivity, it1) }
+                }
+            }
+        }
 
         with(binding) {
             val songs = SongDataProvider.getAllSongs()
             val adapter = SongListAdapter(songs)
             allSongList.adapter = adapter
             adapter.songClickedListener = { song ->
+                selectedSong = song
                 miniPlayer.visibility = VISIBLE
                 val params = allSongList.layoutParams as ConstraintLayout.LayoutParams
                 params.bottomToTop = miniPlayer.id
@@ -45,5 +64,10 @@ class SongListActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelable(SONG_KEY, selectedSong)
+        super.onSaveInstanceState(outState)
     }
 }
