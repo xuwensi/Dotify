@@ -9,9 +9,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.ericchee.songdataprovider.Song
 import edu.uw.wensix.dotify.databinding.ActivitySettingsBinding
 
-private const val TITLE_KEY = "TITLE_KEY"
-private const val IMG_ID_KEY = "IMG_ID_KEY"
-private const val PLAY_COUNT_KEY = "PLAY_COUNT_KEY"
+private const val TITLE_KEY = "title"
+private const val IMG_ID_KEY = "imgId"
+private const val PLAY_COUNT_KEY = "playCount"
 
 fun navigateToSetting(context: Context, title: String, imgId: Int, playCount: String) = with(context) {
     val intent = Intent(context, SettingsActivity::class.java).apply {
@@ -34,17 +34,8 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val title = intent.extras?.getString(TITLE_KEY)
-        val imgId = intent.extras?.getInt(IMG_ID_KEY)
-        val playCount = intent.extras?.getString(PLAY_COUNT_KEY)
+        navController.setGraph(R.navigation.nav_graph, intent.extras)
 
-        navController.setGraph(R.navigation.nav_graph, Bundle().apply {
-            putString("title", title)
-            putString("playCount", playCount)
-            if (imgId != null) {
-                putInt("imgId", imgId)
-            }
-        })
         setupActionBarWithNavController(navController)
     }
 

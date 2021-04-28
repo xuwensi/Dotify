@@ -10,7 +10,7 @@ import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.wensix.dotify.databinding.ActivitySongListBinding
 
-private const val SONG_KEY = "SONG_KEY"
+private const val SONG_KEY = "song"
 
 class SongListActivity : AppCompatActivity() {
 
@@ -62,7 +62,6 @@ class SongListActivity : AppCompatActivity() {
             btnShuffle.setOnClickListener {
                 adapter.updateSong(songs.toMutableList().shuffled())
             }
-
         }
     }
 

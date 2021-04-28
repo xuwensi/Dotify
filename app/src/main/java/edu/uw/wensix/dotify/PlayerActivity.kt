@@ -11,8 +11,8 @@ import android.view.MenuItem
 import edu.uw.wensix.dotify.databinding.ActivityPlayerBinding
 import kotlin.random.Random
 
-private const val SONG_KEY = "SONG_KEY"
-private const val COUNT_VALUE_KEY = "COUNT_VAL_KEY"
+private const val SONG_KEY = "song"
+private const val COUNT_VALUE_KEY = "countValue"
 
 fun navigateToSongDetail(context: Context, song: Song) = with(context) {
 
@@ -74,7 +74,12 @@ class PlayerActivity : AppCompatActivity() {
                     .show()
             }
             btnSetting.setOnClickListener {
-                navigateToSetting(this@PlayerActivity, song.title, song.largeImageID, randomNum.toString())
+                navigateToSetting(
+                    this@PlayerActivity,
+                    song.title,
+                    song.largeImageID,
+                    randomNum.toString()
+                )
             }
         }
     }
@@ -86,12 +91,12 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_setting -> {
-                navigateToSetting(
-                    this@PlayerActivity,
-                    songTitle,
-                    imgId,
-                    randomNum.toString()
-                )
+            navigateToSetting(
+                this@PlayerActivity,
+                songTitle,
+                imgId,
+                randomNum.toString()
+            )
             true
         }
         else -> {
