@@ -17,6 +17,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var dotifyApp: DotifyApplication
     private val dataRepo by lazy { dotifyApp.dataRepository }
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -24,21 +25,29 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = FragmentProfileBinding.inflate(inflater)
+        binding = FragmentProfileBinding.inflate(inflater)
+
+        with(binding) {
+            swipeToRefreshLayout.setOnRefreshListener {
+                loadData()
+                swipeToRefreshLayout.isRefreshing = false
+            }
+        }
+        return binding.root
+    }
+
+    private fun loadData() {
 
         lifecycleScope.launch {
             val user = dataRepo.getUser()
             with(binding) {
                 imgUser.load(user.profilePicURL)
                 userName.text = user.username
-                userFirstName.text = root.context.getString(R.string.profile_first_name, user.firstName)
-                userLastName.text = root.context.getString(R.string.profile_last_name, user.lastName)
-                userHasNose.text = root.context.getString(R.string.profile_has_nose, user.hasNose)
-                userPlatform.text = root.context.getString(R.string.profile_platform, user.platform)
+                userFirstName.text = root.context.getString(edu.uw.wensix.dotify.R.string.profile_first_name, user.firstName)
+                userLastName.text = root.context.getString(edu.uw.wensix.dotify.R.string.profile_last_name, user.lastName)
+                userHasNose.text = root.context.getString(edu.uw.wensix.dotify.R.string.profile_has_nose, user.hasNose)
+                userPlatform.text = root.context.getString(edu.uw.wensix.dotify.R.string.profile_platform, user.platform)
             }
         }
-
-
-        return binding.root
     }
 }
