@@ -1,4 +1,4 @@
-package edu.uw.wensix.dotify
+package edu.uw.wensix.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.widget.*
 import com.ericchee.songdataprovider.Song
 import android.view.Menu
 import android.view.MenuItem
+import edu.uw.wensix.dotify.DotifyApplication
+import edu.uw.wensix.dotify.R
 import edu.uw.wensix.dotify.databinding.ActivityPlayerBinding
 import kotlin.random.Random
 
@@ -110,8 +112,11 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun playClicked() {
+        val dotifyApp = this.applicationContext as DotifyApplication
+        dotifyApp.totalPlayedSoFar += 1
         randomNum += 1
         binding.numPlayed.text = binding.root.context.getString(R.string.play_format, randomNum)
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

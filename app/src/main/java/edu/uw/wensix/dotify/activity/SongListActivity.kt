@@ -1,13 +1,13 @@
-package edu.uw.wensix.dotify
+package edu.uw.wensix.dotify.activity
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.VISIBLE
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
+import edu.uw.wensix.dotify.R
+import edu.uw.wensix.dotify.adapter.SongListAdapter
 import edu.uw.wensix.dotify.databinding.ActivitySongListBinding
 
 private const val SONG_KEY = "song"

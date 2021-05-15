@@ -5,77 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/containerPadding"
-    tools:context=".ProfileFragment">
+    tools:context=".fragment.ProfileFragment">
 
     <ImageView
-        android:id="@+id/imgTiga"
+        android:id="@+id/imgUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/pic_tiga"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tigaName"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ultraman_tiga"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/mediumFont"
-        app:layout_constraintEnd_toEndOf="@id/imgTiga"
-        app:layout_constraintStart_toStartOf="@id/imgTiga"
-        app:layout_constraintTop_toBottomOf="@id/imgTiga" />
+        app:layout_constraintEnd_toEndOf="@id/imgUser"
+        app:layout_constraintStart_toStartOf="@id/imgUser"
+        app:layout_constraintTop_toBottomOf="@id/imgUser" />
 
     <TextView
-        android:id="@+id/tigaAge"
+        android:id="@+id/userFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/profileFragmentPadding"
-        android:text="@string/age_30000000"
         android:textSize="@dimen/smallFont"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tigaName" />
+        app:layout_constraintTop_toBottomOf="@id/userName" />
+
 
     <TextView
-        android:id="@+id/tigaEmail"
+        android:id="@+id/userLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/profileFragmentPadding"
-        android:text="@string/email_tiga_ultraman_com"
         android:textSize="@dimen/smallFont"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tigaAge" />
+        app:layout_constraintTop_toBottomOf="@id/userFirstName" />
 
     <TextView
-        android:id="@+id/tigaHeight"
+        android:id="@+id/userHasNose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/profileFragmentPadding"
-        android:text="@string/height_53m"
         android:textSize="@dimen/smallFont"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tigaEmail" />
+        app:layout_constraintTop_toBottomOf="@id/userLastName" />
 
     <TextView
-        android:id="@+id/tigaWeight"
+        android:id="@+id/userPlatform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/profileFragmentPadding"
-        android:text="@string/weight_44000_tons"
         android:textSize="@dimen/smallFont"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tigaHeight" />
-
-    <TextView
-        android:id="@+id/tigaHumanForm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/profileFragmentPadding"
-        android:text="@string/human_form_daigo_madoka"
-        android:textSize="@dimen/smallFont"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tigaWeight" />
-
+        app:layout_constraintTop_toBottomOf="@id/userHasNose" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

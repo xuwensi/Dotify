@@ -1,10 +1,12 @@
-package edu.uw.wensix.dotify
+package edu.uw.wensix.dotify.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import edu.uw.wensix.dotify.BuildConfig
+import edu.uw.wensix.dotify.R
 import edu.uw.wensix.dotify.databinding.FragmentAboutBinding
 
 

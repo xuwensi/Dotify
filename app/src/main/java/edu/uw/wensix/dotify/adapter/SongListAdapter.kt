@@ -1,10 +1,11 @@
-package edu.uw.wensix.dotify
+package edu.uw.wensix.dotify.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
+import edu.uw.wensix.dotify.SongDiffCallback
 import edu.uw.wensix.dotify.databinding.ItemSongBinding
 
 

@@ -1,4 +1,4 @@
-package edu.uw.wensix.dotify
+package edu.uw.wensix.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.ericchee.songdataprovider.Song
+import edu.uw.wensix.dotify.R
 import edu.uw.wensix.dotify.databinding.ActivitySettingsBinding
 
 private const val TITLE_KEY = "title"
@@ -33,7 +34,6 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
         navController.setGraph(R.navigation.nav_graph, intent.extras)
 
         setupActionBarWithNavController(navController)
