@@ -24,5 +24,6 @@
     <string name="profile_last_name">Last Name: %s</string>
     <string name="profile_has_nose">Has Nose: %s</string>
     <string name="profile_platform">Platform: %s</string>
+    <string name="song_notifications">Song Notifications</string>
 
 </resources>

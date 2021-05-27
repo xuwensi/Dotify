@@ -15,4 +15,6 @@
     <dimen name="aboutFragmentPadding">20dp</dimen>
     <dimen name="statFragmentPadding">20dp</dimen>
     <dimen name="landPlayerImgSize">330dp</dimen>
+    <dimen name="switchNotificationPadding">200dp</dimen>
+
 </resources>
