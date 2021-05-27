@@ -13,10 +13,10 @@ import edu.uw.wensix.dotify.R
 import edu.uw.wensix.dotify.databinding.ActivityPlayerBinding
 import kotlin.random.Random
 
-private const val SONG_KEY = "song"
+const val SONG_KEY = "song"
 private const val COUNT_VALUE_KEY = "countValue"
 
-fun navigateToSongDetail(context: Context, song: Song) = with(context) {
+fun navigateToPlayerActivity(context: Context, song: Song) = with(context) {
 
     val intent = Intent(context, PlayerActivity::class.java).apply {
         val bundle = Bundle().apply {
@@ -52,12 +52,10 @@ class PlayerActivity : AppCompatActivity() {
 
         with(binding) {
             val song: Song? = intent.getParcelableExtra(SONG_KEY)
-
             if (song != null) {
                 songTitle = song.title
                 imgId = song.largeImageID
             }
-
             albumCover.setImageResource(song?.largeImageID ?: return)
             soundTitle.text = song?.title.toString()
             artistName.text = song?.artist.toString()

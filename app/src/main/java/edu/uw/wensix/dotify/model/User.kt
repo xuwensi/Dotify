@@ -12,12 +12,4 @@ data class User(
    val hasNose: String,
    val platform: String,
    val profilePicURL: String
-): Parcelable {
-   override fun writeToParcel(dest: Parcel?, flags: Int) {
-      TODO("Not yet implemented")
-   }
-
-   override fun describeContents(): Int {
-      TODO("Not yet implemented")
-   }
-}
+): Parcelable

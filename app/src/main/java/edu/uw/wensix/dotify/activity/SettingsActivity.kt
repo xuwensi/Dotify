@@ -33,10 +33,12 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_settings)
         navController.setGraph(R.navigation.nav_graph, intent.extras)
-
         setupActionBarWithNavController(navController)
+
+
     }
 
     override fun onSupportNavigateUp() = navController.navigateUp()

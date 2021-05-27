@@ -10,8 +10,6 @@ import edu.uw.wensix.dotify.R
 import edu.uw.wensix.dotify.adapter.SongListAdapter
 import edu.uw.wensix.dotify.databinding.ActivitySongListBinding
 
-private const val SONG_KEY = "song"
-
 class SongListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySongListBinding
@@ -38,7 +36,7 @@ class SongListActivity : AppCompatActivity() {
                         selectedSong?.artist
                     )
                 miniPlayer.setOnClickListener {
-                    selectedSong?.let { it1 -> navigateToSongDetail(this@SongListActivity, it1) }
+                    selectedSong?.let { it1 -> navigateToPlayerActivity(this@SongListActivity, it1) }
                 }
             }
         }
@@ -56,7 +54,7 @@ class SongListActivity : AppCompatActivity() {
                 miniPlayerText.text =
                     root.context.getString(R.string.mini_player_format, song.title, song.artist)
                 miniPlayer.setOnClickListener {
-                    navigateToSongDetail(this@SongListActivity, song)
+                    navigateToPlayerActivity(this@SongListActivity, song)
                 }
             }
             btnShuffle.setOnClickListener {

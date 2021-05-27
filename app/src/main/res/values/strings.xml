@@ -25,5 +25,7 @@
     <string name="profile_has_nose">Has Nose: %s</string>
     <string name="profile_platform">Platform: %s</string>
     <string name="song_notifications">Song Notifications</string>
+    <string name="song_channel_name">New Songs</string>
+    <string name="song_channel_description">Notifys when there is a new song</string>
 
 </resources>

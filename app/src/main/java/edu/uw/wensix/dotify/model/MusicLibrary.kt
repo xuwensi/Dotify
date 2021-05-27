@@ -10,12 +10,4 @@ data class MusicLibrary (
     val title: String,
     val numOfSongs: Int,
     val songs: List<Song>
-): Parcelable {
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun describeContents(): Int {
-        TODO("Not yet implemented")
-    }
-}
+): Parcelable

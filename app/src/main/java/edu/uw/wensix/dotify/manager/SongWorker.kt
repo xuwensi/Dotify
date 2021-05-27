@@ -1,9 +1,11 @@
 package edu.uw.wensix.dotify.manager
 
 import android.content.Context
+import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import edu.uw.wensix.dotify.DotifyApplication
+import kotlin.random.Random
 
 class SongWorker (
     private val context: Context,
@@ -12,10 +14,18 @@ class SongWorker (
 
     private val dotifyApp by lazy { context.applicationContext as DotifyApplication }
     private val songNotificationManager by lazy { dotifyApp.notificationManager }
+    private val dataRepo by lazy { dotifyApp.dataRepository }
 
     override suspend fun doWork(): Result {
-//        songNotificationManager.
+        val musicLibrary = dataRepo.getSongLibrary()
+        var randomNum = Random.nextInt(0, musicLibrary.songs.size)
+        dotifyApp.notificationSong = musicLibrary.songs[randomNum]
+        Log.i("song", dotifyApp.notificationSong.toString())
+
+        songNotificationManager.publishSongNotification()
+
         return Result.success()
     }
+
 
 }

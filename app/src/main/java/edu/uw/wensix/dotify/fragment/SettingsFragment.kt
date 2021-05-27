@@ -6,29 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
+import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.ericchee.songdataprovider.Song
 import edu.uw.wensix.dotify.DotifyApplication
-//import edu.uw.wensix.dotify.SettingsFragmentArgs
-//import edu.uw.wensix.dotify.SettingsFragmentDirections
 import edu.uw.wensix.dotify.databinding.FragmentSettingsBinding
-import kotlinx.coroutines.launch
-import kotlin.random.Random
 
+const val SONG_NOTIFICATION_ENABLED_PREFS_KEY = "notifications enabled"
 
 class SettingsFragment : Fragment() {
 
     private val navController by lazy { findNavController() }
-
     private val safeArgs: SettingsFragmentArgs by navArgs()
-
     private lateinit var dotifyapp: DotifyApplication
-
     private val dataRepo by lazy { dotifyapp.dataRepository }
-
     private lateinit var binding: FragmentSettingsBinding
+    private val songNotificationManager by lazy { dotifyapp.notificationManager}
+    private val refreshSongManager by lazy {dotifyapp.refreshSongManager}
+    private val preferences by lazy { dotifyapp.preferences }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -59,20 +54,23 @@ class SettingsFragment : Fragment() {
                 )
             }
 
-            switchNotifications.setOnCheckedChangeListener(_, isChecked ) -> {
+            switchNotifications.isChecked = preferences.getBoolean(SONG_NOTIFICATION_ENABLED_PREFS_KEY, false)
 
-        }
+            switchNotifications.setOnCheckedChangeListener { _, isChecked ->
+                //saves whether checked in preferences
+                preferences?.edit {
+                    putBoolean(SONG_NOTIFICATION_ENABLED_PREFS_KEY, isChecked)
+                }
+
+                if (isChecked) {
+                    refreshSongManager.startRefreshSongPeriodically()
+                }
+            }
 
         }
 
         return binding.root
     }
 
-    private fun loadSong() {
-        lifecycleScope.launch {
-            val musicLibrary = dataRepo.getSongLibrary()
-            var randomNum = Random.nextInt(0, musicLibrary.numOfSongs + 1)
-            dotifyapp.notificationSong = musicLibrary.songs[randomNum]
-        }
-    }
+
 }
