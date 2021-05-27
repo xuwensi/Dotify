@@ -64,6 +64,8 @@ class SettingsFragment : Fragment() {
 
                 if (isChecked) {
                     refreshSongManager.startRefreshSongPeriodically()
+                } else {
+                    refreshSongManager.stopPeriodicallyRefreshing()
                 }
             }
 

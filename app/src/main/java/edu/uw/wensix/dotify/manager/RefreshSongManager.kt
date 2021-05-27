@@ -41,6 +41,18 @@ class RefreshSongManager(context: Context) {
         workManager.enqueue(request)
     }
 
+    fun doWorkEveryTwoDay() {
+        val request = PeriodicWorkRequestBuilder<SongWorker>(2, TimeUnit.DAYS)
+            .setConstraints(
+                Constraints.Builder()
+                    .setRequiresBatteryNotLow(true)
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .build()
+            )
+            .addTag(SONG_SYNC_WORK_TAG)
+            .build()
+    }
+
     fun stopPeriodicallyRefreshing() {
         workManager.cancelAllWorkByTag(SONG_SYNC_WORK_TAG)
     }
