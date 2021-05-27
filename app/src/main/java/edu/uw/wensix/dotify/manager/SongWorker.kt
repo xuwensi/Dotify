@@ -1,7 +1,6 @@
 package edu.uw.wensix.dotify.manager
 
 import android.content.Context
-import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import edu.uw.wensix.dotify.DotifyApplication
@@ -20,7 +19,6 @@ class SongWorker (
         val musicLibrary = dataRepo.getSongLibrary()
         var randomNum = Random.nextInt(0, musicLibrary.songs.size)
         dotifyApp.notificationSong = musicLibrary.songs[randomNum]
-        Log.i("song", dotifyApp.notificationSong.toString())
 
         songNotificationManager.publishSongNotification()
 
